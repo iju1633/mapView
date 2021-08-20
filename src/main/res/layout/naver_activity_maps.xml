@@ -13,9 +13,7 @@
         android:layout_width="414dp"
         android:layout_height="531dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-
-    </com.naver.maps.map.MapView>
+        tools:layout_editor_absoluteY="0dp"/>
 
     <Button
         android:id="@+id/myPage"
@@ -30,12 +28,20 @@
         map:layout_constraintEnd_toEndOf="parent"
         />
 
-    <Button
+    <EditText
+        android:id="@+id/mapInfo_MyPage"
+        android:layout_width="406dp"
+        android:layout_height="105dp"
+        android:layout_marginBottom="92dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="2dp" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
         android:id="@+id/QR_Scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="QR_Scan"
-        android:text="QR 스캔하기"
+        map:srcCompat="@drawable/qr_icon"
         tools:ignore="OnClick"
         tools:layout_editor_absoluteX="138dp"
         tools:layout_editor_absoluteY="719dp"
@@ -43,23 +49,14 @@
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"/>
 
-    <Button
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
         android:id="@+id/home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="0dp"
+        android:layout_width="117dp"
+        android:layout_height="92dp"
         android:onClick="home"
-        android:text="홈 버튼"
         map:layout_constraintBottom_toBottomOf="parent"
         map:layout_constraintStart_toStartOf="parent"
+        map:srcCompat="@drawable/cash_icon"
         tools:ignore="OnClick" />
-
-    <EditText
-        android:id="@+id/mapInfo_MyPage"
-        android:layout_width="408dp"
-        android:layout_height="200dp"
-        map:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
