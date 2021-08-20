@@ -115,7 +115,8 @@
         android:layout_y="218dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="포인트                                   2000P"
+        android:text="포인트                2000P"
+        android:onClick="point"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="322dp" />
 

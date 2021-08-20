@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.webkit.WebSettings;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
@@ -28,7 +30,20 @@ public class PopupActivity extends Activity implements View.OnClickListener {
 
     Button myPage, level, Description_Level;
     ImageButton imageButton;
-    EditText message, point, wallet, breakdown, profile, image, phoneNum, setting, settings, logOut;
+    TextView message, point, wallet, breakdown, profile, image, phoneNum, setting, settings, logOut;
+
+
+    Button.OnClickListener t = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            TextView txt = (TextView) findViewById(R.id.point);
+            point = (Button)findViewById(v.getId());
+
+            txt.setText(info());
+        }
+    };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +55,8 @@ public class PopupActivity extends Activity implements View.OnClickListener {
         level = findViewById(R.id.level);
         Description_Level = findViewById(R.id.Description_Level);
 
-
-        message = findViewById(R.id.message);
+        // id 매핑
+        message = findViewById(R.id.message); 
         point = findViewById(R.id.point);
         wallet = findViewById(R.id.wallet);
         breakdown = findViewById(R.id.breakdown);
@@ -52,12 +67,27 @@ public class PopupActivity extends Activity implements View.OnClickListener {
         settings = findViewById(R.id.settings);
         logOut = findViewById(R.id.logOut);
 
+//        popupWindow();
 
+//        // setText 테스트
+//        findViewById(R.id.point).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        point.setText(info());
+//                    }
+//                }
+//        );
+
+        getWindow().setBackgroundDrawableResource(android.R.color.transparent); // 왜 안되는 거니..
     }
 
     public void onClick(View view) {
 
-        if (view == myPage) { //view가 alert 이면 팝업실행 즉 버튼을 누르면 팝업창이 뜨는 조건
+
+
+        if (view == myPage) { // view가 alert 이면 팝업실행 즉 버튼을 누르면 팝업창이 뜨는 조건
+
+
             Context mContext = getApplicationContext();
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
 
@@ -72,22 +102,30 @@ public class PopupActivity extends Activity implements View.OnClickListener {
                 }
             });
 
+
         }
 
-//        // 조회란에서 조작 방지를 위한 키보드 숨기기
-//        message.setShowSoftInputOnFocus(false);
-//        point.setShowSoftInputOnFocus(false);
-//        wallet.setShowSoftInputOnFocus(false);
-//        breakdown.setShowSoftInputOnFocus(false);
-//        profile.setShowSoftInputOnFocus(false);
-//        image.setShowSoftInputOnFocus(false);
-//        phoneNum.setShowSoftInputOnFocus(false);
-//        setting.setShowSoftInputOnFocus(false);
-//        settings.setShowSoftInputOnFocus(false);
-//        logOut.setShowSoftInputOnFocus(false);
-
-        getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
+    public String info() {
+        return "제발 되라";
+    }
+
+//    private void popupWindow() {
+//        try {
+//            Context mContext = getApplicationContext();
+//            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+//            View layout = inflater.inflate(R.layout.activity_mypage,
+//                    (ViewGroup) findViewById(R.id.popup));
+//            PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.activity_mypage,
+//                    null, false), 480, 800, true);
+//
+//            point = (TextView) layout
+//                    .findViewById(R.id.point);
+//            point.setText("Recording"); //Update the TextView
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 

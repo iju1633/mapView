@@ -68,7 +68,6 @@ public class MapsNaverActivity extends Activity implements OnMapReadyCallback, V
 
     public void onClick(View view){
 
-
     }
 
 
