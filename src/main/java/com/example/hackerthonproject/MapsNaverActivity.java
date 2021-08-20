@@ -1,9 +1,15 @@
 package com.example.hackerthonproject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,16 +28,26 @@ import com.naver.maps.map.overlay.Marker;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class MapsNaverActivity extends Activity implements OnMapReadyCallback {
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+
+public class MapsNaverActivity extends Activity implements OnMapReadyCallback, View.OnClickListener {
 
     MapView mapView;
     EditText mapInfo_MyPage;
-    Button home, QR_Scan, myPage;
+    Button home, QR_Scan;
 
+    String QR_Scan_Message = "QR 코드가 스캔되었습니다.";
+    String MyPage_Message = "마이페이지 정보가 조회되었습니다.";
 
     IntentIntegrator integrator;
-    private int point = 1000;
-    private int bonus = 1000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +56,7 @@ public class MapsNaverActivity extends Activity implements OnMapReadyCallback {
 
         mapView = findViewById(R.id.mapView);
         mapView.getMapAsync(this);
+
     }
 
     @Override
@@ -51,13 +68,18 @@ public class MapsNaverActivity extends Activity implements OnMapReadyCallback {
 
     public void onClick(View view){
 
+
     }
 
-    public void home(View view){
 
+    public void home(View view){
+        mapInfo_MyPage.setText("");
     }
 
     public void QR_Scan(View view){
+
+        // mapInfo_MyPage.setText(QR_Scan_Message);
+
         integrator = new IntentIntegrator(this);
 
         integrator.setPrompt("QR 코드를 사각형 안에 위치 시켜주세요");
@@ -74,31 +96,27 @@ public class MapsNaverActivity extends Activity implements OnMapReadyCallback {
     }
 
     public void myPage(View view){
-        mapInfo_MyPage.setText(" ");
+
+        // mapInfo_MyPage.setText(MyPage_Message);
+
+        Context mContext = getApplicationContext();
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        View layout = inflater.inflate(R.layout.activity_mypage, (ViewGroup) findViewById(R.id.popup));
+        AlertDialog.Builder dialog = new AlertDialog.Builder(MapsNaverActivity.this);
+
+        dialog.setTitle("MyPage");
+        dialog.setView(layout);
+
+        dialog.setNegativeButton("닫기", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+        });
+
+        AlertDialog ad = dialog.create();
+        ad.show();
     }
 
-    public int getPoint() {
-        return point;
-    }
-
-    // 적립될 포인트
-    public void setPoint(int point) {
-        this.point = point;
-    }
-
-    public void addPoint() {
-        this.point += getBonus();
-    }
-
-    public String printInfo(){
-        return "  적립된 Point : " + getBonus() + "원";
-    }
-
-    public int getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
-    }
 }
