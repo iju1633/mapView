@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapsNaverActivity">
+
+    <com.naver.maps.map.MapView
+        android:id="@+id/mapView"
+        android:name="com.naver.maps.map.MapFragment"
+        android:layout_width="394dp"
+        android:layout_height="591dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+    </com.naver.maps.map.MapView>
+
+    <Button
+        android:id="@+id/myPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="myPage"
+        android:text="MyPage"
+        tools:ignore="OnClick"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="721dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/QR_Scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="QR_Scan"
+        android:text="QR 스캔하기"
+        tools:ignore="OnClick"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="719dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:onClick="home"
+        android:text="홈 버튼"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        tools:ignore="OnClick" />
+
+    <EditText
+        android:id="@+id/mapInfo_MyPage"
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
