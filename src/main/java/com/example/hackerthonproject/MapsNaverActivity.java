@@ -44,7 +44,7 @@ public class MapsNaverActivity extends Activity implements OnMapReadyCallback, V
     EditText mapInfo_MyPage;
     Button home, QR_Scan;
 
-    String QR_Scan_Message = "QR 코드가 스캔되었습니다.";
+    String QR_Scan_Message = "QR 코드가 스캔되었습니다.";1 123
     String MyPage_Message = "마이페이지 정보가 조회되었습니다.";
 
     IntentIntegrator integrator;
