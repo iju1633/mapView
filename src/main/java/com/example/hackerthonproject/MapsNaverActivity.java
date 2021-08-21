@@ -72,7 +72,8 @@ public class MapsNaverActivity extends Activity implements OnMapReadyCallback, V
 
 
     public void home(View view){
-        mapInfo_MyPage.setText("");
+
+
     }
 
     public void QR_Scan(View view){

@@ -25,6 +25,8 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 
 public class PopupActivity extends Activity implements View.OnClickListener {
 
@@ -32,26 +34,23 @@ public class PopupActivity extends Activity implements View.OnClickListener {
     ImageButton imageButton;
     TextView message, point, wallet, breakdown, profile, image, phoneNum, setting, settings, logOut;
 
-
-    Button.OnClickListener t = new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            TextView txt = (TextView) findViewById(R.id.point);
-            point = (Button)findViewById(v.getId());
-
-            txt.setText(info());
-        }
-    };
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        // 등급와 등급별 혜택 버튼
+        myPage = (Button) findViewById(R.id.myPage);
+
+        myPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
+               startActivity(intent);
+            }
+        });
+
+                // 등급와 등급별 혜택 버튼
         level = findViewById(R.id.level);
         Description_Level = findViewById(R.id.Description_Level);
 
@@ -66,6 +65,7 @@ public class PopupActivity extends Activity implements View.OnClickListener {
         setting = findViewById(R.id.setting);
         settings = findViewById(R.id.settings);
         logOut = findViewById(R.id.logOut);
+
 
 //        popupWindow();
 
@@ -83,7 +83,15 @@ public class PopupActivity extends Activity implements View.OnClickListener {
 
     public void onClick(View view) {
 
+        Button.OnClickListener t = new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView txt = (TextView) findViewById(R.id.point);
+                point = (Button)findViewById(v.getId());
 
+                txt.setText(info());
+            }
+        };
 
         if (view == myPage) { // view가 alert 이면 팝업실행 즉 버튼을 누르면 팝업창이 뜨는 조건
 
